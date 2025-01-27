@@ -16,5 +16,10 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
