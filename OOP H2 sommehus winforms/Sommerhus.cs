@@ -37,8 +37,23 @@ namespace OOP_H2_sommehus_winforms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button_opret_Click(object sender, EventArgs e)
         {
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO [sommerhus] (navn, pris,område,sæson,inspektør) VALUES (@navn, @pris,@område,@sæson,@inspektør)", connection);
+            cmd.Parameters.AddWithValue("@navn", txt_navn.Text);
+            cmd.Parameters.AddWithValue("@område", txt_område.Text);
+            cmd.Parameters.AddWithValue("@pris",txt_pris.Text);
+            cmd.Parameters.AddWithValue("@sæson", txt_sæson);
+            cmd.Parameters.AddWithValue("@inspektør", txt_inspektør);
+
+
+            cmd.ExecuteNonQuery();
+
+            connection.Close();
+            MessageBox.Show("Fuldført");
         }
+
     }
 }
