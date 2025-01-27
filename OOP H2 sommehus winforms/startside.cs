@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OOP_H2_sommehus_winforms
 {
-    public partial class Form1 : Form
+    public partial class startside : Form
     {
-        public Form1()
+        public startside()
         {
             InitializeComponent();
         }
@@ -22,16 +22,17 @@ namespace OOP_H2_sommehus_winforms
         {
 
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Sommerhusejere(object sender, EventArgs e)
         {
 
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void sommerhus(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void reservation(object sender, EventArgs e)
         {
 
         }
