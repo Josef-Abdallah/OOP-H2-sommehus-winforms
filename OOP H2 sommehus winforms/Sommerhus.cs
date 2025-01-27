@@ -13,11 +13,19 @@ namespace OOP_H2_sommehus_winforms
 {
     public partial class Sommerhus : Form
     {
-        public string connectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+        public string connectionString = "Server=localhost\\SQLEXPRESS;Database=Sommerhus-DB;Trusted_Connection=True;";
 
         public Sommerhus()
         {
             InitializeComponent();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * from [sommerhus]", connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -31,14 +39,6 @@ namespace OOP_H2_sommehus_winforms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            SqlCommand cmd = new SqlCommand("SELECT * from [Table]", connection);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
         }
     }
 }
