@@ -54,5 +54,9 @@ namespace OOP_H2_sommehus_winforms
             MessageBox.Show("Fuldført");
         }
 
+        private void Sommerhus_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
