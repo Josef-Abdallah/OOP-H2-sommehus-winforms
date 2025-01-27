@@ -73,5 +73,9 @@ namespace OOP_H2_sommehus_winforms
             MessageBox.Show("opdateret");
 
         }
+        private void Sommerhus_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
