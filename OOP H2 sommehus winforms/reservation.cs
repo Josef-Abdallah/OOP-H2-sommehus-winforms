@@ -203,11 +203,6 @@ namespace OOP_H2_sommehus_winforms
 
             txt_Rnavn.ReadOnly = false;
         }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

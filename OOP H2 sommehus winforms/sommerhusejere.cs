@@ -104,7 +104,6 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
-
         /// <summary>
         /// is being used to show the edit fields so you can edit
         /// </summary>
@@ -135,7 +134,6 @@ namespace OOP_H2_sommehus_winforms
 
             txt_navn_redigere.ReadOnly = false; // Unlock the text box for new input
         }
-
         /// <summary>
         /// Sets the initial visibility of the form elements to false.
         /// </summary>
@@ -149,13 +147,17 @@ namespace OOP_H2_sommehus_winforms
             button_redigere.Visible = false;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button_DeleteEjere_Click(object sender, EventArgs e)
         {
-
-        }
-        private void button_CheckName_Click(object sender, EventArgs e)
-        {
-
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [sommerhusejere] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_navn_delete.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Slettet");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+            }
         }
     }
 }

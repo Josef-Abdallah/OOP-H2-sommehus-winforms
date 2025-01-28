@@ -17,7 +17,6 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
         }
-
         private void Sommerhusejere(object sender, EventArgs e)
         {
             sommerhusejere ejere = new sommerhusejere();

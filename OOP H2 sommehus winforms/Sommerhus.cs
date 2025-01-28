@@ -218,31 +218,6 @@ namespace OOP_H2_sommehus_winforms
                 comboBox.Items.Add(inspektør[i]);
             }
         }
-
-        private void txt_Rnavn_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ByNavn_redigerHus_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void Sommerhus_Load(object sender, EventArgs e)
-        {
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
     }
 
 

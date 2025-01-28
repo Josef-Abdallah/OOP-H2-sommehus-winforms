@@ -74,7 +74,6 @@
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(1154, 546);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button_opret
             // 
@@ -222,7 +221,6 @@
             this.txt_Rnavn.Name = "txt_Rnavn";
             this.txt_Rnavn.Size = new System.Drawing.Size(181, 26);
             this.txt_Rnavn.TabIndex = 33;
-            this.txt_Rnavn.TextChanged += new System.EventHandler(this.txt_Rnavn_TextChanged);
             // 
             // label11
             // 
@@ -435,7 +433,6 @@
             this.Name = "Sommerhus";
             this.Text = "Sommerhus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Sommerhus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
