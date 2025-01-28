@@ -17,4 +17,11 @@ namespace OOP_H2_sommehus_winforms
         public string Inspektør { get; set; }
 
     }
+    public class SommerhusejereData
+    {
+        public string Navn { get; set; }
+        public string tlf { get; set; }
+        public string email { get; set; }
+
+    }
 }
