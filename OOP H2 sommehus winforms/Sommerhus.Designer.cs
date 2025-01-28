@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_opret = new System.Windows.Forms.Button();
             this.txt_område = new System.Windows.Forms.TextBox();
@@ -62,18 +61,6 @@
             this.Sæson_comboBox_Opret = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1002, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "SommerHus";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridView1
             // 
@@ -200,7 +187,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(546, 574);
+            this.label8.Location = new System.Drawing.Point(545, 526);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 29);
@@ -211,7 +198,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(546, 492);
+            this.label9.Location = new System.Drawing.Point(546, 442);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 29);
@@ -222,7 +209,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(542, 418);
+            this.label10.Location = new System.Drawing.Point(541, 368);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 29);
@@ -231,7 +218,7 @@
             // 
             // txt_Rinspektør
             // 
-            this.txt_Rinspektør.Location = new System.Drawing.Point(720, 577);
+            this.txt_Rinspektør.Location = new System.Drawing.Point(719, 529);
             this.txt_Rinspektør.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rinspektør.Name = "txt_Rinspektør";
             this.txt_Rinspektør.Size = new System.Drawing.Size(181, 26);
@@ -239,7 +226,7 @@
             // 
             // txt_Rpris
             // 
-            this.txt_Rpris.Location = new System.Drawing.Point(720, 418);
+            this.txt_Rpris.Location = new System.Drawing.Point(719, 368);
             this.txt_Rpris.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rpris.Name = "txt_Rpris";
             this.txt_Rpris.Size = new System.Drawing.Size(181, 26);
@@ -258,7 +245,7 @@
             // 
             // txt_Rområde
             // 
-            this.txt_Rområde.Location = new System.Drawing.Point(720, 341);
+            this.txt_Rområde.Location = new System.Drawing.Point(721, 292);
             this.txt_Rområde.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rområde.Name = "txt_Rområde";
             this.txt_Rområde.Size = new System.Drawing.Size(181, 26);
@@ -266,7 +253,7 @@
             // 
             // txt_Rnavn
             // 
-            this.txt_Rnavn.Location = new System.Drawing.Point(720, 272);
+            this.txt_Rnavn.Location = new System.Drawing.Point(720, 222);
             this.txt_Rnavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rnavn.Name = "txt_Rnavn";
             this.txt_Rnavn.Size = new System.Drawing.Size(181, 26);
@@ -277,7 +264,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(546, 338);
+            this.label11.Location = new System.Drawing.Point(547, 289);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(101, 29);
@@ -288,7 +275,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(546, 272);
+            this.label12.Location = new System.Drawing.Point(546, 222);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 29);
@@ -299,7 +286,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(543, 150);
+            this.label13.Location = new System.Drawing.Point(543, 98);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(274, 47);
@@ -308,7 +295,7 @@
             // 
             // button_Slet
             // 
-            this.button_Slet.Location = new System.Drawing.Point(1368, 272);
+            this.button_Slet.Location = new System.Drawing.Point(1365, 216);
             this.button_Slet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Slet.Name = "button_Slet";
             this.button_Slet.Size = new System.Drawing.Size(112, 35);
@@ -319,7 +306,7 @@
             // 
             // txt_Snavn
             // 
-            this.txt_Snavn.Location = new System.Drawing.Point(1176, 272);
+            this.txt_Snavn.Location = new System.Drawing.Point(1176, 222);
             this.txt_Snavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Snavn.Name = "txt_Snavn";
             this.txt_Snavn.Size = new System.Drawing.Size(181, 26);
@@ -329,7 +316,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1002, 272);
+            this.label18.Location = new System.Drawing.Point(1002, 222);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 29);
@@ -340,7 +327,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(1000, 150);
+            this.label19.Location = new System.Drawing.Point(999, 98);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(176, 47);
@@ -360,7 +347,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(789, 304);
+            this.button1.Location = new System.Drawing.Point(791, 255);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 43);
@@ -369,20 +356,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button_CheckName_Click);
             // 
-            // Sæson_comboBox
+            // Sæson_comboBox_rediger
             // 
             this.Sæson_comboBox_rediger.FormattingEnabled = true;
-            this.Sæson_comboBox_rediger.Location = new System.Drawing.Point(721, 493);
-            this.Sæson_comboBox_rediger.Name = "Sæson_comboBox";
+            this.Sæson_comboBox_rediger.Location = new System.Drawing.Point(721, 443);
+            this.Sæson_comboBox_rediger.Name = "Sæson_comboBox_rediger";
             this.Sæson_comboBox_rediger.Size = new System.Drawing.Size(180, 28);
             this.Sæson_comboBox_rediger.TabIndex = 50;
             this.Sæson_comboBox_rediger.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox1
+            // Sæson_comboBox_Opret
             // 
             this.Sæson_comboBox_Opret.FormattingEnabled = true;
             this.Sæson_comboBox_Opret.Location = new System.Drawing.Point(196, 446);
-            this.Sæson_comboBox_Opret.Name = "comboBox1";
+            this.Sæson_comboBox_Opret.Name = "Sæson_comboBox_Opret";
             this.Sæson_comboBox_Opret.Size = new System.Drawing.Size(181, 28);
             this.Sæson_comboBox_Opret.TabIndex = 51;
             // 
@@ -422,7 +409,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Sommerhus";
             this.Text = "Sommerhus";
@@ -435,8 +421,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_opret;
         private System.Windows.Forms.TextBox txt_område;
