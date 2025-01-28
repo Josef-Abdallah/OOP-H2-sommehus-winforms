@@ -30,8 +30,6 @@ namespace OOP_H2_sommehus_winforms
             // Set the  visibility of the edit fields to false
             SetInitialVisibility();
             
-            AddSæsonToComboBoxes(Sæson_comboBox_rediger);
-            AddSæsonToComboBoxes(Sæson_comboBox_Opret);
         }
 
 
@@ -42,23 +40,22 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = false;
             txt_Rområde.Visible = false;
-            Sæson_comboBox_rediger.Visible = false;
             txt_Rinspektør.Visible = false;
 
             label11.Visible = false;
             label10.Visible = false;
-            label9.Visible = false;
             label8.Visible = false;
             button_Redigere.Visible = false;
         }
 
         private void OpretSommerhus_button(object sender, EventArgs e)
         {
-            ExecuteNonQuery("INSERT INTO [sommerhus] (navn, pris, område, sæson, inspektør) VALUES (@navn, @pris, @område, @sæson, @inspektør)",
+            ExecuteNonQuery("INSERT INTO [sommerhus] (navn, bynavn, vejnavn, pris, område, inspektør) VALUES (@navn, @bynavn, @vejnavn, @pris, @område, @inspektør)",
                 new SqlParameter("@navn", txt_navn.Text),
+                new SqlParameter("@bynavn", ByNavn_OpretHus.Text),
+                new SqlParameter("@vejnavn", VejNavn_OpretHus.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
                 new SqlParameter("@område", txt_område.Text),
-                new SqlParameter("@sæson", Sæson_comboBox_Opret.Text),
                 new SqlParameter("@inspektør", txt_inspektør.Text));
 
             MessageBox.Show("Fuldført");
@@ -67,11 +64,10 @@ namespace OOP_H2_sommehus_winforms
 
         private void RedigerSommerhus_button(object sender, EventArgs e)
         {
-            ExecuteNonQuery("UPDATE [sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn=@oldNavn",
+            ExecuteNonQuery("UPDATE [sommerhus] SET navn=@navn, pris=@pris, område=@område, inspektør=@inspektør WHERE navn=@oldNavn",
                 new SqlParameter("@navn", txt_Rnavn.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_Rpris.Text)),
                 new SqlParameter("@område", txt_Rområde.Text),
-                new SqlParameter("@sæson", Sæson_comboBox_rediger.Text),
                 new SqlParameter("@inspektør", txt_Rinspektør.Text),
                 new SqlParameter("@oldNavn", txt_Rnavn.Text));
 
@@ -93,7 +89,6 @@ namespace OOP_H2_sommehus_winforms
             txt_Rnavn.Text = "";
             txt_Rområde.Text = "";
             txt_Rpris.Text = "";
-            Sæson_comboBox_rediger.Text = "";
             txt_Rinspektør.Text = "";
 
             SetInitialVisibility();
@@ -145,12 +140,10 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = true;
             txt_Rområde.Visible = true;
-            Sæson_comboBox_rediger.Visible = true;
             txt_Rinspektør.Visible = true;
 
             label11.Visible = true;
             label10.Visible = true;
-            label9.Visible = true;
             label8.Visible = true;
 
             button1.Visible = false;
@@ -171,12 +164,19 @@ namespace OOP_H2_sommehus_winforms
             }
         }
 
-        private void AddSæsonToComboBoxes(ComboBox comboBox)
+        private void txt_Rnavn_TextChanged(object sender, EventArgs e)
         {
-            comboBox.Items.Add("Vinter");
-            comboBox.Items.Add("Sommer");
-            comboBox.Items.Add("Efterår");
-            comboBox.Items.Add("Forår");
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ByNavn_redigerHus_TextChanged(object sender, EventArgs e)
+        {
+
         }
         private void Sommerhus_Load(object sender, EventArgs e)
         {
@@ -187,16 +187,6 @@ namespace OOP_H2_sommehus_winforms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        }
-
-        private void txt_Rnavn_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

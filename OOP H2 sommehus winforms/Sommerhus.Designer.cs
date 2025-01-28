@@ -38,10 +38,8 @@
             this.txt_pris = new System.Windows.Forms.TextBox();
             this.txt_inspektør = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_Rinspektør = new System.Windows.Forms.TextBox();
             this.txt_Rpris = new System.Windows.Forms.TextBox();
@@ -57,8 +55,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.StartsideBut = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.Sæson_comboBox_rediger = new System.Windows.Forms.ComboBox();
-            this.Sæson_comboBox_Opret = new System.Windows.Forms.ComboBox();
+            this.ByNavn_OpretHus = new System.Windows.Forms.TextBox();
+            this.Bynavn_opret_label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.VejNavn_OpretHus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +76,7 @@
             // 
             // button_opret
             // 
-            this.button_opret.Location = new System.Drawing.Point(267, 606);
+            this.button_opret.Location = new System.Drawing.Point(267, 379);
             this.button_opret.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_opret.Name = "button_opret";
             this.button_opret.Size = new System.Drawing.Size(112, 35);
@@ -87,7 +87,7 @@
             // 
             // txt_område
             // 
-            this.txt_område.Location = new System.Drawing.Point(196, 288);
+            this.txt_område.Location = new System.Drawing.Point(198, 277);
             this.txt_område.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_område.Name = "txt_område";
             this.txt_område.Size = new System.Drawing.Size(181, 26);
@@ -95,7 +95,7 @@
             // 
             // txt_navn
             // 
-            this.txt_navn.Location = new System.Drawing.Point(196, 222);
+            this.txt_navn.Location = new System.Drawing.Point(198, 176);
             this.txt_navn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_navn.Name = "txt_navn";
             this.txt_navn.Size = new System.Drawing.Size(181, 26);
@@ -105,7 +105,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 288);
+            this.label3.Location = new System.Drawing.Point(21, 274);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 29);
@@ -116,7 +116,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 222);
+            this.label2.Location = new System.Drawing.Point(22, 172);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 29);
@@ -136,7 +136,7 @@
             // 
             // txt_pris
             // 
-            this.txt_pris.Location = new System.Drawing.Point(196, 368);
+            this.txt_pris.Location = new System.Drawing.Point(198, 307);
             this.txt_pris.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_pris.Name = "txt_pris";
             this.txt_pris.Size = new System.Drawing.Size(181, 26);
@@ -144,7 +144,7 @@
             // 
             // txt_inspektør
             // 
-            this.txt_inspektør.Location = new System.Drawing.Point(196, 526);
+            this.txt_inspektør.Location = new System.Drawing.Point(198, 343);
             this.txt_inspektør.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_inspektør.Name = "txt_inspektør";
             this.txt_inspektør.Size = new System.Drawing.Size(181, 26);
@@ -154,29 +154,18 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 368);
+            this.label5.Location = new System.Drawing.Point(22, 303);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 29);
             this.label5.TabIndex = 15;
             this.label5.Text = "Pris";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(22, 442);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 29);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Sæson";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 525);
+            this.label7.Location = new System.Drawing.Point(22, 332);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(112, 29);
@@ -187,29 +176,18 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(545, 526);
+            this.label8.Location = new System.Drawing.Point(541, 274);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 29);
             this.label8.TabIndex = 41;
             this.label8.Text = "Inspektør";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(546, 442);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 29);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Sæson";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(541, 368);
+            this.label10.Location = new System.Drawing.Point(541, 236);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 29);
@@ -218,7 +196,7 @@
             // 
             // txt_Rinspektør
             // 
-            this.txt_Rinspektør.Location = new System.Drawing.Point(719, 529);
+            this.txt_Rinspektør.Location = new System.Drawing.Point(719, 276);
             this.txt_Rinspektør.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rinspektør.Name = "txt_Rinspektør";
             this.txt_Rinspektør.Size = new System.Drawing.Size(181, 26);
@@ -226,7 +204,7 @@
             // 
             // txt_Rpris
             // 
-            this.txt_Rpris.Location = new System.Drawing.Point(719, 368);
+            this.txt_Rpris.Location = new System.Drawing.Point(719, 240);
             this.txt_Rpris.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rpris.Name = "txt_Rpris";
             this.txt_Rpris.Size = new System.Drawing.Size(181, 26);
@@ -234,7 +212,7 @@
             // 
             // button_Redigere
             // 
-            this.button_Redigere.Location = new System.Drawing.Point(789, 657);
+            this.button_Redigere.Location = new System.Drawing.Point(788, 370);
             this.button_Redigere.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Redigere.Name = "button_Redigere";
             this.button_Redigere.Size = new System.Drawing.Size(112, 35);
@@ -245,7 +223,7 @@
             // 
             // txt_Rområde
             // 
-            this.txt_Rområde.Location = new System.Drawing.Point(721, 292);
+            this.txt_Rområde.Location = new System.Drawing.Point(721, 211);
             this.txt_Rområde.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rområde.Name = "txt_Rområde";
             this.txt_Rområde.Size = new System.Drawing.Size(181, 26);
@@ -253,7 +231,7 @@
             // 
             // txt_Rnavn
             // 
-            this.txt_Rnavn.Location = new System.Drawing.Point(720, 222);
+            this.txt_Rnavn.Location = new System.Drawing.Point(719, 177);
             this.txt_Rnavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Rnavn.Name = "txt_Rnavn";
             this.txt_Rnavn.Size = new System.Drawing.Size(181, 26);
@@ -264,7 +242,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(547, 289);
+            this.label11.Location = new System.Drawing.Point(541, 207);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(101, 29);
@@ -275,7 +253,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(546, 222);
+            this.label12.Location = new System.Drawing.Point(541, 173);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 29);
@@ -295,7 +273,7 @@
             // 
             // button_Slet
             // 
-            this.button_Slet.Location = new System.Drawing.Point(1365, 216);
+            this.button_Slet.Location = new System.Drawing.Point(1226, 151);
             this.button_Slet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_Slet.Name = "button_Slet";
             this.button_Slet.Size = new System.Drawing.Size(112, 35);
@@ -306,7 +284,7 @@
             // 
             // txt_Snavn
             // 
-            this.txt_Snavn.Location = new System.Drawing.Point(1176, 222);
+            this.txt_Snavn.Location = new System.Drawing.Point(1037, 155);
             this.txt_Snavn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_Snavn.Name = "txt_Snavn";
             this.txt_Snavn.Size = new System.Drawing.Size(181, 26);
@@ -316,7 +294,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1002, 222);
+            this.label18.Location = new System.Drawing.Point(961, 152);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 29);
@@ -327,7 +305,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(999, 98);
+            this.label19.Location = new System.Drawing.Point(958, 98);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(176, 47);
@@ -347,7 +325,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(791, 255);
+            this.button1.Location = new System.Drawing.Point(791, 138);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 43);
@@ -356,30 +334,53 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button_CheckName_Click);
             // 
-            // Sæson_comboBox_rediger
+            // ByNavn_OpretHus
             // 
-            this.Sæson_comboBox_rediger.FormattingEnabled = true;
-            this.Sæson_comboBox_rediger.Location = new System.Drawing.Point(721, 443);
-            this.Sæson_comboBox_rediger.Name = "Sæson_comboBox_rediger";
-            this.Sæson_comboBox_rediger.Size = new System.Drawing.Size(180, 28);
-            this.Sæson_comboBox_rediger.TabIndex = 50;
-            this.Sæson_comboBox_rediger.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.ByNavn_OpretHus.Location = new System.Drawing.Point(198, 212);
+            this.ByNavn_OpretHus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ByNavn_OpretHus.Name = "ByNavn_OpretHus";
+            this.ByNavn_OpretHus.Size = new System.Drawing.Size(181, 26);
+            this.ByNavn_OpretHus.TabIndex = 52;
             // 
-            // Sæson_comboBox_Opret
+            // Bynavn_opret_label
             // 
-            this.Sæson_comboBox_Opret.FormattingEnabled = true;
-            this.Sæson_comboBox_Opret.Location = new System.Drawing.Point(196, 446);
-            this.Sæson_comboBox_Opret.Name = "Sæson_comboBox_Opret";
-            this.Sæson_comboBox_Opret.Size = new System.Drawing.Size(181, 28);
-            this.Sæson_comboBox_Opret.TabIndex = 51;
+            this.Bynavn_opret_label.AutoSize = true;
+            this.Bynavn_opret_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bynavn_opret_label.Location = new System.Drawing.Point(22, 208);
+            this.Bynavn_opret_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Bynavn_opret_label.Name = "Bynavn_opret_label";
+            this.Bynavn_opret_label.Size = new System.Drawing.Size(95, 29);
+            this.Bynavn_opret_label.TabIndex = 53;
+            this.Bynavn_opret_label.Text = "ByNavn";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 244);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 29);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "VejNavn";
+            // 
+            // VejNavn_OpretHus
+            // 
+            this.VejNavn_OpretHus.Location = new System.Drawing.Point(198, 248);
+            this.VejNavn_OpretHus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.VejNavn_OpretHus.Name = "VejNavn_OpretHus";
+            this.VejNavn_OpretHus.Size = new System.Drawing.Size(181, 26);
+            this.VejNavn_OpretHus.TabIndex = 55;
             // 
             // Sommerhus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2163, 1106);
-            this.Controls.Add(this.Sæson_comboBox_Opret);
-            this.Controls.Add(this.Sæson_comboBox_rediger);
+            this.Controls.Add(this.VejNavn_OpretHus);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Bynavn_opret_label);
+            this.Controls.Add(this.ByNavn_OpretHus);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.StartsideBut);
             this.Controls.Add(this.button_Slet);
@@ -387,7 +388,6 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txt_Rinspektør);
             this.Controls.Add(this.txt_Rpris);
@@ -398,7 +398,6 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_inspektør);
             this.Controls.Add(this.txt_pris);
@@ -431,10 +430,8 @@
         private System.Windows.Forms.TextBox txt_pris;
         private System.Windows.Forms.TextBox txt_inspektør;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_Rinspektør;
         private System.Windows.Forms.TextBox txt_Rpris;
@@ -450,7 +447,9 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button StartsideBut;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox Sæson_comboBox_rediger;
-        private System.Windows.Forms.ComboBox Sæson_comboBox_Opret;
+        private System.Windows.Forms.TextBox ByNavn_OpretHus;
+        private System.Windows.Forms.Label Bynavn_opret_label;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox VejNavn_OpretHus;
     }
 }
