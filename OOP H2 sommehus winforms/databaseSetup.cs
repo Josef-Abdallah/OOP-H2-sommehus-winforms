@@ -82,7 +82,8 @@ namespace OOP_H2_sommehus_winforms
                 navn NVARCHAR(100) NOT NULL,
                 kontaktinformation NVARCHAR(100) NOT NULL,
                 StartDato DATETIME NOT NULL,
-                SlutDato DATETIME NOT NULL
+                SlutDato DATETIME NOT NULL,
+                IsReserved BIT NOT NULL DEFAULT 0
             );
             END";
                     }

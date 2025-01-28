@@ -39,7 +39,9 @@ namespace OOP_H2_sommehus_winforms
 
         private void reservation(object sender, EventArgs e)
         {
-
+            reservation r = new reservation();
+            r.Show();
+            Visible=false;
         }
 
     }

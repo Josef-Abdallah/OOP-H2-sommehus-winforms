@@ -54,6 +54,7 @@
             this.button_opret.TabIndex = 30;
             this.button_opret.Text = "Opret";
             this.button_opret.UseVisualStyleBackColor = true;
+            this.button_opret.Click += new System.EventHandler(this.button_opret_Click);
             // 
             // txt_kontaktinformation
             // 
