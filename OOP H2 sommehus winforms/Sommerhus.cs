@@ -13,6 +13,7 @@ namespace OOP_H2_sommehus_winforms
 {
     public partial class Sommerhus : Form
     {
+        databaseSetup databaseSetup = new databaseSetup();
 
         public string masterConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
         public string connectionString = "Server=localhost\\SQLEXPRESS;Database=Sommerhus-DB;Trusted_Connection=True;";
@@ -21,7 +22,6 @@ namespace OOP_H2_sommehus_winforms
         public Sommerhus()
         {
             InitializeComponent();
-            databaseSetup databaseSetup = new databaseSetup();
             databaseSetup.EnsureDatabaseAndTables();
             databaseSetup.LoadData(dataGridView1);
         }
@@ -52,7 +52,7 @@ namespace OOP_H2_sommehus_winforms
 
             connection.Close();
             MessageBox.Show("Fuldført");
-            dataGridView1.Update();
+            databaseSetup.LoadData(dataGridView1);
         }
 
         private void button_Redigere_Click(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace OOP_H2_sommehus_winforms
             connection.Open();
 
 
-            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn=" + txt_Rnavn + "", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn='"+txt_Rnavn+"'", connection);
             cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
             cmd.Parameters.AddWithValue("@område", txt_Rområde.Text);
             cmd.Parameters.AddWithValue("@pris", decimal.Parse(txt_Rpris.Text));
@@ -72,7 +72,7 @@ namespace OOP_H2_sommehus_winforms
 
             connection.Close();
             MessageBox.Show("opdateret");
-            dataGridView1.Update();
+            databaseSetup.LoadData(dataGridView1);
 
         }
         private void Sommerhus_Load(object sender, EventArgs e)
@@ -89,7 +89,14 @@ namespace OOP_H2_sommehus_winforms
             cmd.ExecuteNonQuery();
             connection.Close();
             MessageBox.Show("Slettet");
-            dataGridView1.Update();
+            databaseSetup.LoadData(dataGridView1);
+        }
+
+        private void StartsideBut_Click(object sender, EventArgs e)
+        {
+            startside ss = new startside();
+            ss.Show();
+            Visible = false; 
         }
     }
 }

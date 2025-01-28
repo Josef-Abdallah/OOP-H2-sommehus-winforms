@@ -30,10 +30,9 @@ namespace OOP_H2_sommehus_winforms
         }
         private void sommerhus(object sender, EventArgs e)
         {
-            startside ss = new startside();
-            ss.Hide();
             Sommerhus sommerhus = new Sommerhus();
             sommerhus.Show();
+            Visible = false;
         }
 
         private void reservation(object sender, EventArgs e)
