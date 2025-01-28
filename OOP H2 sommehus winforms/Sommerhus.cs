@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace OOP_H2_sommehus_winforms
 {
@@ -24,9 +25,18 @@ namespace OOP_H2_sommehus_winforms
             InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables();
             databaseSetup.LoadData(dataGridView1);
-        }
 
-        
+            txt_Rpris.Visible = false;
+            txt_Rområde.Visible = false;
+            txt_Rsæson.Visible = false;
+            txt_Rinspektør.Visible = false;
+
+            label11.Visible = false;
+            label10.Visible = false;
+            label9.Visible = false;
+            label8.Visible = false;
+            button_Redigere.Visible = false;
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -61,7 +71,7 @@ namespace OOP_H2_sommehus_winforms
             connection.Open();
 
 
-            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn='"+txt_Rnavn.Text+"'", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn='" + txt_Rnavn.Text + "'", connection);
             cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
             cmd.Parameters.AddWithValue("@område", txt_Rområde.Text);
             cmd.Parameters.AddWithValue("@pris", decimal.Parse(txt_Rpris.Text));
@@ -96,7 +106,42 @@ namespace OOP_H2_sommehus_winforms
         {
             startside ss = new startside();
             ss.Show();
-            Visible = false; 
+            Visible = false;
+        }
+
+        private void button_CheckName_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [sommerhus] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
+                int count = (int)cmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    // Execute the desired code if the name is found
+                    txt_Rpris.Visible = true;
+                    txt_Rområde.Visible = true;
+                    txt_Rsæson.Visible = true;
+                    txt_Rinspektør.Visible = true;
+
+                    label11.Visible = true;
+                    label10.Visible = true;
+                    label9.Visible = true;
+                    label8.Visible = true;
+
+                    button1.Visible = false;
+                    button_Redigere.Visible = true;
+
+                    txt_Rnavn.ReadOnly = true; // Lock the text box to prevent editing
+                    MessageBox.Show("Navn fundet, nu kan du redigere sommerhus");
+                }
+                else
+                {
+                    MessageBox.Show("Navn ikke fundet");
+                }
+                connection.Close();
+            }
         }
     }
 }
