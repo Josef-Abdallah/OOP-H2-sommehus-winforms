@@ -96,7 +96,7 @@
             this.button_opret.TabIndex = 11;
             this.button_opret.Text = "Opret";
             this.button_opret.UseVisualStyleBackColor = true;
-            this.button_opret.Click += new System.EventHandler(this.button_opret_Click);
+            this.button_opret.Click += new System.EventHandler(this.OpretSommerhus_button);
             // 
             // txt_område
             // 
@@ -270,7 +270,7 @@
             this.button_Redigere.TabIndex = 35;
             this.button_Redigere.Text = "Redigere";
             this.button_Redigere.UseVisualStyleBackColor = true;
-            this.button_Redigere.Click += new System.EventHandler(this.button_Redigere_Click);
+            this.button_Redigere.Click += new System.EventHandler(this.RedigerSommerhus_button);
             // 
             // txt_Rområde
             // 
