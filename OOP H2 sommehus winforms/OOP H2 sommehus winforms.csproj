@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="databaseSetup.cs" />
     <Compile Include="startside.cs">
       <SubType>Form</SubType>
     </Compile>
