@@ -46,5 +46,12 @@ namespace OOP_H2_sommehus_winforms
         {
 
         }
+
+        private void StartsideBut_Click(object sender, EventArgs e)
+        {
+            startside ss = new startside();
+            ss.Show();
+            Visible = false;
+        }
     }
 }
