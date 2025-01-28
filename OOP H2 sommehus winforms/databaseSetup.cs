@@ -47,11 +47,13 @@ namespace OOP_H2_sommehus_winforms
         IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
         BEGIN
             CREATE TABLE [{tabel}] (
-                Id INT IDENTITY(1,1) PRIMARY KEY,
+                sommerHusId INT IDENTITY(1,1) PRIMARY KEY, 
+                ejerId INT FOREIGN KEY,
                 navn NVARCHAR(100) NOT NULL,
+                bynavn NVARCHAR(50) NOT NULL,
+                vejnavn NVARCHAR(50) NOT NULL,
                 pris DECIMAL(18, 2) NOT NULL,
                 område NVARCHAR(100) NOT NULL,
-                sæson NVARCHAR(50),
                 inspektør NVARCHAR(100)
             );
             END";
@@ -62,9 +64,10 @@ namespace OOP_H2_sommehus_winforms
         IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
         BEGIN
             CREATE TABLE [{tabel}] (
-                Id INT IDENTITY(1,1) PRIMARY KEY,
+                ejerId INT IDENTITY(1,1) PRIMARY KEY,
                 navn NVARCHAR(100) NOT NULL,
-                kontaktinformation NVARCHAR(100) NOT NULL
+                email NVARCHAR(100) NOT NULL,
+                tlf NVARCHAR(100) NOT NULL
             );
             END";
                     }
@@ -75,8 +78,10 @@ namespace OOP_H2_sommehus_winforms
         BEGIN
             CREATE TABLE [{tabel}] (
                 Id INT IDENTITY(1,1) PRIMARY KEY,
+                sommerHusId INT FOREIGN KEY,
                 navn NVARCHAR(100) NOT NULL,
                 kontaktinformation NVARCHAR(100) NOT NULL
+
             );
             END";
                     }

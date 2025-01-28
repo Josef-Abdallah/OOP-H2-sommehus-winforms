@@ -30,9 +30,10 @@ namespace OOP_H2_sommehus_winforms
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO [sommerhusejere] (navn, kontaktinformation) VALUES (@navn, @kontaktinformation)", connection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO [sommerhusejere] (navn,email,tlf) VALUES (@navn, @email,tlf)", connection);
             cmd.Parameters.AddWithValue("@navn", txt_navn.Text);
-            cmd.Parameters.AddWithValue("@kontaktinformation", txt_kontaktinformation.Text);
+            cmd.Parameters.AddWithValue("@tlf", txt_tlf.Text);
+            cmd.Parameters.AddWithValue("@email", txt_email.Text);
 
             cmd.ExecuteNonQuery();
 
