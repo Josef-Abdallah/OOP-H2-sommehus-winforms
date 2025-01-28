@@ -48,7 +48,7 @@ namespace OOP_H2_sommehus_winforms
         BEGIN
             CREATE TABLE [{tabel}] (
                 sommerHusId INT IDENTITY(1,1) PRIMARY KEY, 
-                ejerId INT FOREIGN KEY,
+                ejerId INT NOT NULL FOREIGN KEY REFERENCES [sommerhusejere](ejerId),
                 navn NVARCHAR(100) NOT NULL,
                 bynavn NVARCHAR(50) NOT NULL,
                 vejnavn NVARCHAR(50) NOT NULL,
@@ -78,7 +78,7 @@ namespace OOP_H2_sommehus_winforms
         BEGIN
             CREATE TABLE [{tabel}] (
                 Id INT IDENTITY(1,1) PRIMARY KEY,
-                sommerHusId INT FOREIGN KEY,
+                sommerHusId INT NOT NULL FOREIGN KEY REFERENCES [sommerhus](sommerHusId),
                 navn NVARCHAR(100) NOT NULL,
                 kontaktinformation NVARCHAR(100) NOT NULL
 
