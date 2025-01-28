@@ -93,14 +93,14 @@ namespace OOP_H2_sommehus_winforms
             }
         }
 
-        public void LoadData(DataGridView dataGridView)
+        public void LoadData(DataGridView dataGridView,string tabel)
         {
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * from [sommerhus]", connection);
+                    SqlCommand cmd = new SqlCommand($"SELECT * from [{tabel}]", connection);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     System.Data.DataTable dt = new System.Data.DataTable();
                     da.Fill(dt);
