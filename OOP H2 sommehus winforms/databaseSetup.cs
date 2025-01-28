@@ -12,12 +12,13 @@ namespace OOP_H2_sommehus_winforms
     {
         public string masterConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
         public string connectionString = "Server=localhost\\SQLEXPRESS;Database=Sommerhus-DB;Trusted_Connection=True;";
+        string checkTableQuery;
 
 
         /// <summary>
         /// Ensure that the database and tables are created
         /// </summary>
-        public void EnsureDatabaseAndTables()
+        public void EnsureDatabaseAndTables(string tabel)
         {
             try
             {
@@ -40,10 +41,12 @@ namespace OOP_H2_sommehus_winforms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string checkTableQuery = @"
-        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'sommerhus' AND xtype = 'U')
+                    if (tabel == "sommerhus")
+                    {
+                        checkTableQuery = $@"
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
         BEGIN
-            CREATE TABLE [sommerhus] (
+            CREATE TABLE [{tabel}] (
                 Id INT IDENTITY(1,1) PRIMARY KEY,
                 navn NVARCHAR(100) NOT NULL,
                 pris DECIMAL(18, 2) NOT NULL,
@@ -52,10 +55,36 @@ namespace OOP_H2_sommehus_winforms
                 inspektør NVARCHAR(100)
             );
             END";
-                    using (SqlCommand cmd = new SqlCommand(checkTableQuery, connection))
-                    {
-                        cmd.ExecuteNonQuery();
                     }
+                    else if (tabel == "sommerhusejere")
+                    {
+                        checkTableQuery = $@"
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
+        BEGIN
+            CREATE TABLE [{tabel}] (
+                Id INT IDENTITY(1,1) PRIMARY KEY,
+                navn NVARCHAR(100) NOT NULL,
+                kontaktinformation NVARCHAR(100) NOT NULL
+            );
+            END";
+                    }
+                    else if (tabel == "resevartion")
+                    {
+                        checkTableQuery = $@"
+        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
+        BEGIN
+            CREATE TABLE [{tabel}] (
+                Id INT IDENTITY(1,1) PRIMARY KEY,
+                navn NVARCHAR(100) NOT NULL,
+                kontaktinformation NVARCHAR(100) NOT NULL
+            );
+            END";
+                    }
+                    using (SqlCommand cmd = new SqlCommand(checkTableQuery, connection))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                    
                 }
             }
             catch (Exception ex)

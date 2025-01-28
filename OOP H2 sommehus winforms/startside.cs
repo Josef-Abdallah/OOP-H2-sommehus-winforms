@@ -26,7 +26,9 @@ namespace OOP_H2_sommehus_winforms
 
         private void Sommerhusejere(object sender, EventArgs e)
         {
-           
+            sommerhusejere ejere = new sommerhusejere();
+            ejere.Show();
+            Visible = false;
         }
         private void sommerhus(object sender, EventArgs e)
         {
