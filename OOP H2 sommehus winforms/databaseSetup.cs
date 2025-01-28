@@ -77,11 +77,12 @@ namespace OOP_H2_sommehus_winforms
         IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
         BEGIN
             CREATE TABLE [{tabel}] (
-                Id INT IDENTITY(1,1) PRIMARY KEY,
+                 Id INT IDENTITY(1,1) PRIMARY KEY,
                 sommerHusId INT NOT NULL FOREIGN KEY REFERENCES [sommerhus](sommerHusId),
                 navn NVARCHAR(100) NOT NULL,
-                kontaktinformation NVARCHAR(100) NOT NULL
-
+                kontaktinformation NVARCHAR(100) NOT NULL,
+                StartDato DATETIME NOT NULL,
+                SlutDato DATETIME NOT NULL
             );
             END";
                     }
