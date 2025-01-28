@@ -94,6 +94,7 @@ namespace OOP_H2_sommehus_winforms
                 while (reader.Read())
                 {
                     SommerhusId_combobox.Items.Add($"{reader["sommerhusId"]}: {reader["navn"]}");
+                    comboBox_RsommerhusId.Items.Add($"{reader["sommerhusId"]}: {reader["navn"]}");
                 }
                 connection.Close();
             }
@@ -113,6 +114,37 @@ namespace OOP_H2_sommehus_winforms
             startside ss = new startside();
             ss.Show();
             Visible = false;
+        }
+
+        private void button_Redigere_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE [resevartion] SET sommerHusId=@sommerHusId, navn=@navn, kontaktinformation=@kontaktinformation, StartDato=@StartDato, SlutDato=@SlutDato, IsReserved=@IsReserved WHERE navn=@Navn", connection);
+                cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(comboBox_RsommerhusId.Text.Split(':')[0]));
+                cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
+                cmd.Parameters.AddWithValue("@kontaktinformation", txt_Rtlf.Text);
+                cmd.Parameters.AddWithValue("@StartDato", fromDateR.Value);
+                cmd.Parameters.AddWithValue("@SlutDato", ToDateR.Value);
+                cmd.Parameters.AddWithValue("@IsReserved", true);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Opdateret");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+            }
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [resevartion] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_Snavn.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Slettet");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+            }
         }
     }
 
