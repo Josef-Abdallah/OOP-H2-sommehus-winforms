@@ -37,7 +37,6 @@ namespace OOP_H2_sommehus_winforms
             LoadInspektørIntoComboBox(inspektør_redigerhus_combobox);
         }
 
-
         /// <summary>
         /// Loads all "ejere" into comboBox2.
         /// </summary>
@@ -71,18 +70,27 @@ namespace OOP_H2_sommehus_winforms
             button_Redigere.Visible = false;
         }
 
-
-
         private void OpretSommerhus_button(object sender, EventArgs e)
         {
+            SommerhusData sommerhus = new SommerhusData
+            {
+                EjerId = comboBox2.SelectedItem.ToString().Split(':')[0].Trim(),
+                Navn = txt_navn.Text,
+                ByNavn = ByNavn_OpretHus.Text,
+                VejNavn = VejNavn_OpretHus.Text,
+                Pris = decimal.Parse(txt_pris.Text),
+                Område = txt_område.Text,
+                Inspektør = Inspektør_combobox_opretHus.Text
+            };
+
             ExecuteNonQuery("INSERT INTO [sommerhus] (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) VALUES (@ejerId, @navn, @bynavn, @vejnavn, @pris, @område, @inspektør)",
-                new SqlParameter("@ejerId", comboBox2.SelectedItem.ToString().Split(':')[0].Trim()),
-                new SqlParameter("@navn", txt_navn.Text),
-                new SqlParameter("@bynavn", ByNavn_OpretHus.Text),
-                new SqlParameter("@vejnavn", VejNavn_OpretHus.Text),
-                new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
-                new SqlParameter("@område", txt_område.Text),
-                new SqlParameter("@inspektør", Inspektør_combobox_opretHus.Text));
+                new SqlParameter("@ejerId", sommerhus.EjerId),
+                new SqlParameter("@navn", sommerhus.Navn),
+                new SqlParameter("@bynavn", sommerhus.ByNavn),
+                new SqlParameter("@vejnavn", sommerhus.VejNavn),
+                new SqlParameter("@pris", sommerhus.Pris),
+                new SqlParameter("@område", sommerhus.Område),
+                new SqlParameter("@inspektør", sommerhus.Inspektør));
 
             MessageBox.Show("Fuldført");
             databaseSetup.LoadData(dataGridView1, tabelString);
@@ -90,21 +98,35 @@ namespace OOP_H2_sommehus_winforms
 
         private void RedigerSommerhus_button(object sender, EventArgs e)
         {
+            SommerhusData sommerhus = new SommerhusData
+            {
+                Navn = txt_Rnavn.Text,
+                Pris = decimal.Parse(txt_Rpris.Text),
+                Område = txt_Rområde.Text,
+                Inspektør = inspektør_redigerhus_combobox.Text
+            };
+
             ExecuteNonQuery("UPDATE [sommerhus] SET navn=@navn, pris=@pris, område=@område, inspektør=@inspektør WHERE navn=@oldNavn",
-                new SqlParameter("@navn", txt_Rnavn.Text),
-                new SqlParameter("@pris", decimal.Parse(txt_Rpris.Text)),
-                new SqlParameter("@område", txt_Rområde.Text),
-                new SqlParameter("@inspektør", inspektør_redigerhus_combobox.Text),
-                new SqlParameter("@oldNavn", txt_Rnavn.Text));
+                new SqlParameter("@navn", sommerhus.Navn),
+                new SqlParameter("@pris", sommerhus.Pris),
+                new SqlParameter("@område", sommerhus.Område),
+                new SqlParameter("@inspektør", sommerhus.Inspektør),
+                new SqlParameter("@oldNavn", sommerhus.Navn));
 
             MessageBox.Show("Opdateret");
             databaseSetup.LoadData(dataGridView1, tabelString);
             ResetFormFields();
         }
+
         private void button_Slet_Click(object sender, EventArgs e)
         {
+            SommerhusData sommerhus = new SommerhusData
+            {
+                Navn = txt_Snavn.Text
+            };
+
             ExecuteNonQuery("DELETE FROM [sommerhus] WHERE navn=@navn",
-                new SqlParameter("@navn", txt_Snavn.Text));
+                new SqlParameter("@navn", sommerhus.Navn));
 
             MessageBox.Show("Slettet");
             databaseSetup.LoadData(dataGridView1, tabelString);
@@ -131,7 +153,6 @@ namespace OOP_H2_sommehus_winforms
             ss.Show();
             Visible = false;
         }
-
 
         /// <summary>
         /// checks if the name is registerd in the database and if so it shows the editable field to edit the sommerhus 
@@ -223,4 +244,7 @@ namespace OOP_H2_sommehus_winforms
         {
         }
     }
+
+
 }
+

@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
     <Compile Include="databaseSetup.cs" />
+    <Compile Include="SommerhusClasse.cs" />
     <Compile Include="startside.cs">
       <SubType>Form</SubType>
     </Compile>

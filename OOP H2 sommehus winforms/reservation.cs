@@ -12,7 +12,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_H2_sommehus_winforms
 {
-
     public partial class reservation : Form
     {
         databaseSetup databaseSetup = new databaseSetup();
@@ -29,6 +28,12 @@ namespace OOP_H2_sommehus_winforms
 
         private void button_opret_Click(object sender, EventArgs e)
         {
+            if (fromDate.Value > ToDate.Value)
+            {
+                MessageBox.Show("Start date cannot be after the end date.");
+                return;
+            }
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -51,14 +56,21 @@ namespace OOP_H2_sommehus_winforms
                     return;
                 }
 
+                // Create a new customer object
+                Customer customer = new Customer
+                {
+                    Navn = txt_navn.Text,
+                    tlfNummer = txt_kontaktinformation.Text
+                };
+
                 // Insert new reservation
                 SqlCommand cmd = new SqlCommand(
                     "INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved) " +
                     "VALUES (@sommerHusId, @navn, @kontaktinformation, @StartDato, @SlutDato, @IsReserved)",
                     connection);
                 cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(SommerhusId_combobox.Text.Split(':')[0]));
-                cmd.Parameters.AddWithValue("@navn", txt_navn.Text);
-                cmd.Parameters.AddWithValue("@kontaktinformation", txt_kontaktinformation.Text);
+                cmd.Parameters.AddWithValue("@navn", customer.Navn);
+                cmd.Parameters.AddWithValue("@kontaktinformation", customer.tlfNummer);
                 cmd.Parameters.AddWithValue("@StartDato", fromDate.Value);
                 cmd.Parameters.AddWithValue("@SlutDato", ToDate.Value);
                 cmd.Parameters.AddWithValue("@IsReserved", true);
@@ -68,7 +80,6 @@ namespace OOP_H2_sommehus_winforms
                 databaseSetup.LoadData(dataGridView1, tabelString);
             }
         }
-
 
         /// <summary>
         /// Loads all "sommerhusId" into comboBox2.
@@ -96,9 +107,6 @@ namespace OOP_H2_sommehus_winforms
         {
 
         }
-
-
-
-
     }
+
 }
