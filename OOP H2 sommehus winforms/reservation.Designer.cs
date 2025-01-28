@@ -56,6 +56,7 @@
             this.txt_Snavn = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button_Delete = new System.Windows.Forms.Button();
+            this.button_FindReservedHouse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,6 @@
             this.txt_navn.Name = "txt_navn";
             this.txt_navn.Size = new System.Drawing.Size(122, 20);
             this.txt_navn.TabIndex = 28;
-            this.txt_navn.TextChanged += new System.EventHandler(this.txt_navn_TextChanged);
             // 
             // label3
             // 
@@ -112,7 +112,6 @@
             this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 26;
             this.label2.Text = "Navn";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -284,9 +283,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(1091, 20);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 31);
+            this.label10.Size = new System.Drawing.Size(159, 31);
             this.label10.TabIndex = 61;
-            this.label10.Text = "Rediger huse";
+            this.label10.Text = "Delete huse";
             // 
             // txt_Snavn
             // 
@@ -315,11 +314,22 @@
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
+            // button_FindReservedHouse
+            // 
+            this.button_FindReservedHouse.Location = new System.Drawing.Point(591, 55);
+            this.button_FindReservedHouse.Name = "button_FindReservedHouse";
+            this.button_FindReservedHouse.Size = new System.Drawing.Size(75, 23);
+            this.button_FindReservedHouse.TabIndex = 65;
+            this.button_FindReservedHouse.Text = "Find reseveret hus";
+            this.button_FindReservedHouse.UseVisualStyleBackColor = true;
+            this.button_FindReservedHouse.Click += new System.EventHandler(this.button_FindReservedHouse_Click);
+            // 
             // reservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 638);
+            this.Controls.Add(this.button_FindReservedHouse);
             this.Controls.Add(this.button_Delete);
             this.Controls.Add(this.txt_Snavn);
             this.Controls.Add(this.label11);
@@ -387,5 +397,6 @@
         private System.Windows.Forms.TextBox txt_Snavn;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button_Delete;
+        private System.Windows.Forms.Button button_FindReservedHouse;
     }
 }

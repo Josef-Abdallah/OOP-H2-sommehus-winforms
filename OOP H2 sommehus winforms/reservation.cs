@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace OOP_H2_sommehus_winforms
 {
@@ -23,6 +24,7 @@ namespace OOP_H2_sommehus_winforms
             InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables(tabelString);
             databaseSetup.LoadData(dataGridView1, tabelString);
+            SetInitialVisibility();
             LoadSommerhusIdIntoComboBox();
         }
 
@@ -99,15 +101,6 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
-        private void txt_navn_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void StartsideBut_Click(object sender, EventArgs e)
         {
@@ -131,9 +124,23 @@ namespace OOP_H2_sommehus_winforms
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Opdateret");
                 databaseSetup.LoadData(dataGridView1, tabelString);
+                ResetFormFields();
             }
         }
+        private void SetInitialVisibility()
+        {
+            txt_Rtlf.Visible = false;
+            fromDateR.Visible = false;
+            ToDateR.Visible = false;
+            comboBox_RsommerhusId.Visible = false;
 
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+
+            button_FindReservedHouse.Visible = true;
+            button_Redigere.Visible = false;
+        }
         private void button_Delete_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -145,6 +152,61 @@ namespace OOP_H2_sommehus_winforms
                 MessageBox.Show("Slettet");
                 databaseSetup.LoadData(dataGridView1, tabelString);
             }
+        }
+        private void ResetFormFields()
+        {
+            txt_Rnavn.Text = "";
+            txt_Rtlf.Text = "";
+            comboBox_RsommerhusId.Text = "";
+
+            SetInitialVisibility();
+
+            button_FindReservedHouse.Visible = true;
+            button_Redigere.Visible = false;
+
+            txt_Rnavn.ReadOnly = false; // Unlock the text box for new input
+        }
+        private void button_FindReservedHouse_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM [resevartion] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
+                int count = (int)cmd.ExecuteScalar();
+                if (count > 0)
+                {
+                    ShowEditFields();
+                    MessageBox.Show("Navn fundet, nu kan du redigere sommerhus");
+                }
+                else
+                {
+                    MessageBox.Show("Navn ikke fundet");
+                }
+                connection.Close();
+            }
+        }
+        private void ShowEditFields()
+        {
+            txt_Rnavn.Visible = true;
+            txt_Rtlf.Visible = true;
+            fromDateR.Visible = true;
+            ToDateR.Visible = true;
+            comboBox_RsommerhusId.Visible = true;
+
+            label7.Visible = true;
+            label6.Visible = true;
+            label5.Visible = true;
+
+            button_FindReservedHouse.Visible = false;
+            button_Redigere.Visible = true;
+
+            txt_Rnavn.ReadOnly = false;
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
