@@ -29,9 +29,28 @@ namespace OOP_H2_sommehus_winforms
             databaseSetup.LoadData(dataGridView1, tabelString);
             // Set the  visibility of the edit fields to false
             SetInitialVisibility();
-            
+
+            // Load "ejere" into comboBox2
+            LoadEjereIntoComboBox();
         }
 
+        /// <summary>
+        /// Loads all "ejere" into comboBox2.
+        /// </summary>
+        private void LoadEjereIntoComboBox()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT ejerId, navn FROM sommerhusejere", connection);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox2.Items.Add($"{reader["ejerId"]}: {reader["navn"]}");
+                }
+                connection.Close();
+            }
+        }
 
         /// <summary>
         /// Sets the initial visibility of the form elements to false.
@@ -48,18 +67,21 @@ namespace OOP_H2_sommehus_winforms
             button_Redigere.Visible = false;
         }
 
+
+
         private void OpretSommerhus_button(object sender, EventArgs e)
         {
-            ExecuteNonQuery("INSERT INTO [sommerhus] (navn, bynavn, vejnavn, pris, område, inspektør) VALUES (@navn, @bynavn, @vejnavn, @pris, @område, @inspektør)",
+            ExecuteNonQuery("INSERT INTO [sommerhus] (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) VALUES (@ejerId, @navn, @bynavn, @vejnavn, @pris, @område, @inspektør)",
                 new SqlParameter("@navn", txt_navn.Text),
                 new SqlParameter("@bynavn", ByNavn_OpretHus.Text),
                 new SqlParameter("@vejnavn", VejNavn_OpretHus.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
                 new SqlParameter("@område", txt_område.Text),
                 new SqlParameter("@inspektør", txt_inspektør.Text));
+                new SqlParameter("@ejerId", comboBox2.SelectedItem.ToString());
 
             MessageBox.Show("Fuldført");
-            databaseSetup.LoadData(dataGridView1,tabelString);
+            databaseSetup.LoadData(dataGridView1, tabelString);
         }
 
         private void RedigerSommerhus_button(object sender, EventArgs e)
@@ -72,7 +94,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@oldNavn", txt_Rnavn.Text));
 
             MessageBox.Show("Opdateret");
-            databaseSetup.LoadData(dataGridView1,tabelString);
+            databaseSetup.LoadData(dataGridView1, tabelString);
             ResetFormFields();
         }
         private void button_Slet_Click(object sender, EventArgs e)

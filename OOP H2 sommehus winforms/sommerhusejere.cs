@@ -41,5 +41,10 @@ namespace OOP_H2_sommehus_winforms
             MessageBox.Show("Fuldført");
             databaseSetup.LoadData(dataGridView1,tabelString);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

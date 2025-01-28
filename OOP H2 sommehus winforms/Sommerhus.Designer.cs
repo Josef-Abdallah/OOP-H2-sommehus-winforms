@@ -59,6 +59,7 @@
             this.Bynavn_opret_label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.VejNavn_OpretHus = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +77,7 @@
             // 
             // button_opret
             // 
-            this.button_opret.Location = new System.Drawing.Point(267, 379);
+            this.button_opret.Location = new System.Drawing.Point(267, 407);
             this.button_opret.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button_opret.Name = "button_opret";
             this.button_opret.Size = new System.Drawing.Size(112, 35);
@@ -372,11 +373,20 @@
             this.VejNavn_OpretHus.Size = new System.Drawing.Size(181, 26);
             this.VejNavn_OpretHus.TabIndex = 55;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(198, 377);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(181, 28);
+            this.comboBox2.TabIndex = 57;
+            // 
             // Sommerhus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2163, 1106);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.VejNavn_OpretHus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Bynavn_opret_label);
@@ -451,5 +461,6 @@
         private System.Windows.Forms.Label Bynavn_opret_label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox VejNavn_OpretHus;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
