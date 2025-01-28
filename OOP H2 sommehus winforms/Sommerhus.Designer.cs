@@ -36,12 +36,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_pris = new System.Windows.Forms.TextBox();
-            this.txt_inspektør = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_Rinspektør = new System.Windows.Forms.TextBox();
             this.txt_Rpris = new System.Windows.Forms.TextBox();
             this.button_Redigere = new System.Windows.Forms.Button();
             this.txt_Rområde = new System.Windows.Forms.TextBox();
@@ -60,6 +58,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.VejNavn_OpretHus = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Inspektør_combobox_opretHus = new System.Windows.Forms.ComboBox();
+            this.inspektør_redigerhus_combobox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,14 +144,6 @@
             this.txt_pris.Size = new System.Drawing.Size(181, 26);
             this.txt_pris.TabIndex = 12;
             // 
-            // txt_inspektør
-            // 
-            this.txt_inspektør.Location = new System.Drawing.Point(198, 343);
-            this.txt_inspektør.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_inspektør.Name = "txt_inspektør";
-            this.txt_inspektør.Size = new System.Drawing.Size(181, 26);
-            this.txt_inspektør.TabIndex = 14;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -194,14 +187,6 @@
             this.label10.Size = new System.Drawing.Size(55, 29);
             this.label10.TabIndex = 39;
             this.label10.Text = "Pris";
-            // 
-            // txt_Rinspektør
-            // 
-            this.txt_Rinspektør.Location = new System.Drawing.Point(719, 276);
-            this.txt_Rinspektør.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_Rinspektør.Name = "txt_Rinspektør";
-            this.txt_Rinspektør.Size = new System.Drawing.Size(181, 26);
-            this.txt_Rinspektør.TabIndex = 38;
             // 
             // txt_Rpris
             // 
@@ -381,11 +366,41 @@
             this.comboBox2.Size = new System.Drawing.Size(181, 28);
             this.comboBox2.TabIndex = 57;
             // 
+            // Inspektør_combobox_opretHus
+            // 
+            this.Inspektør_combobox_opretHus.FormattingEnabled = true;
+            this.Inspektør_combobox_opretHus.Location = new System.Drawing.Point(198, 343);
+            this.Inspektør_combobox_opretHus.Name = "Inspektør_combobox_opretHus";
+            this.Inspektør_combobox_opretHus.Size = new System.Drawing.Size(181, 28);
+            this.Inspektør_combobox_opretHus.TabIndex = 58;
+            // 
+            // inspektør_redigerhus_combobox
+            // 
+            this.inspektør_redigerhus_combobox.FormattingEnabled = true;
+            this.inspektør_redigerhus_combobox.Location = new System.Drawing.Point(719, 274);
+            this.inspektør_redigerhus_combobox.Name = "inspektør_redigerhus_combobox";
+            this.inspektør_redigerhus_combobox.Size = new System.Drawing.Size(181, 28);
+            this.inspektør_redigerhus_combobox.TabIndex = 59;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(22, 370);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 29);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "Ejere";
+            // 
             // Sommerhus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2163, 1106);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.inspektør_redigerhus_combobox);
+            this.Controls.Add(this.Inspektør_combobox_opretHus);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.VejNavn_OpretHus);
             this.Controls.Add(this.label1);
@@ -399,7 +414,6 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txt_Rinspektør);
             this.Controls.Add(this.txt_Rpris);
             this.Controls.Add(this.button_Redigere);
             this.Controls.Add(this.txt_Rområde);
@@ -409,7 +423,6 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txt_inspektør);
             this.Controls.Add(this.txt_pris);
             this.Controls.Add(this.button_opret);
             this.Controls.Add(this.txt_område);
@@ -438,12 +451,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_pris;
-        private System.Windows.Forms.TextBox txt_inspektør;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_Rinspektør;
         private System.Windows.Forms.TextBox txt_Rpris;
         private System.Windows.Forms.Button button_Redigere;
         private System.Windows.Forms.TextBox txt_Rområde;
@@ -462,5 +473,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox VejNavn_OpretHus;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox Inspektør_combobox_opretHus;
+        private System.Windows.Forms.ComboBox inspektør_redigerhus_combobox;
+        private System.Windows.Forms.Label label6;
     }
 }

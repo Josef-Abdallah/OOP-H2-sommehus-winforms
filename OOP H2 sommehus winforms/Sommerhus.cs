@@ -14,12 +14,12 @@ namespace OOP_H2_sommehus_winforms
 {
     public partial class Sommerhus : Form
     {
+        List<string> inspektør = new List<string> { "hans", "peter", "lars", "jens", "mads" };
         databaseSetup databaseSetup = new databaseSetup();
 
         public string masterConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
         public string connectionString = "Server=localhost\\SQLEXPRESS;Database=Sommerhus-DB;Trusted_Connection=True;";
         private string tabelString = "sommerhus";
-
         public Sommerhus()
         {
             InitializeComponent();
@@ -32,7 +32,11 @@ namespace OOP_H2_sommehus_winforms
 
             // Load "ejere" into comboBox2
             LoadEjereIntoComboBox();
+
+            LoadInspektørIntoComboBox(Inspektør_combobox_opretHus);
+            LoadInspektørIntoComboBox(inspektør_redigerhus_combobox);
         }
+
 
         /// <summary>
         /// Loads all "ejere" into comboBox2.
@@ -59,7 +63,7 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = false;
             txt_Rområde.Visible = false;
-            txt_Rinspektør.Visible = false;
+            inspektør_redigerhus_combobox.Visible = false;
 
             label11.Visible = false;
             label10.Visible = false;
@@ -78,7 +82,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@vejnavn", VejNavn_OpretHus.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
                 new SqlParameter("@område", txt_område.Text),
-                new SqlParameter("@inspektør", txt_inspektør.Text));
+                new SqlParameter("@inspektør", Inspektør_combobox_opretHus.Text));
 
             MessageBox.Show("Fuldført");
             databaseSetup.LoadData(dataGridView1, tabelString);
@@ -90,7 +94,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@navn", txt_Rnavn.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_Rpris.Text)),
                 new SqlParameter("@område", txt_Rområde.Text),
-                new SqlParameter("@inspektør", txt_Rinspektør.Text),
+                new SqlParameter("@inspektør", inspektør_redigerhus_combobox.Text),
                 new SqlParameter("@oldNavn", txt_Rnavn.Text));
 
             MessageBox.Show("Opdateret");
@@ -111,7 +115,7 @@ namespace OOP_H2_sommehus_winforms
             txt_Rnavn.Text = "";
             txt_Rområde.Text = "";
             txt_Rpris.Text = "";
-            txt_Rinspektør.Text = "";
+            inspektør_redigerhus_combobox.Text = "";
 
             SetInitialVisibility();
 
@@ -162,7 +166,7 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = true;
             txt_Rområde.Visible = true;
-            txt_Rinspektør.Visible = true;
+            inspektør_redigerhus_combobox.Visible = true;
 
             label11.Visible = true;
             label10.Visible = true;
@@ -183,6 +187,14 @@ namespace OOP_H2_sommehus_winforms
                 cmd.Parameters.AddRange(parameters);
                 cmd.ExecuteNonQuery();
                 connection.Close();
+            }
+        }
+
+        private void LoadInspektørIntoComboBox(ComboBox comboBox)
+        {
+            for (int i = 0; i < inspektør.Count; i++)
+            {
+                comboBox.Items.Add(inspektør[i]);
             }
         }
 
