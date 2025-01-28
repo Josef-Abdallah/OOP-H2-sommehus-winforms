@@ -61,7 +61,7 @@ namespace OOP_H2_sommehus_winforms
             connection.Open();
 
 
-            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn='"+txt_Rnavn+"'", connection);
+            SqlCommand cmd = new SqlCommand("UPDATE[sommerhus] SET navn=@navn, pris=@pris, område=@område, sæson=@sæson, inspektør=@inspektør WHERE navn='"+txt_Rnavn.Text+"'", connection);
             cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
             cmd.Parameters.AddWithValue("@område", txt_Rområde.Text);
             cmd.Parameters.AddWithValue("@pris", decimal.Parse(txt_Rpris.Text));
