@@ -72,13 +72,13 @@ namespace OOP_H2_sommehus_winforms
         private void OpretSommerhus_button(object sender, EventArgs e)
         {
             ExecuteNonQuery("INSERT INTO [sommerhus] (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) VALUES (@ejerId, @navn, @bynavn, @vejnavn, @pris, @område, @inspektør)",
+                new SqlParameter("@ejerId", comboBox2.SelectedItem.ToString().Split(':')[0].Trim()),
                 new SqlParameter("@navn", txt_navn.Text),
                 new SqlParameter("@bynavn", ByNavn_OpretHus.Text),
                 new SqlParameter("@vejnavn", VejNavn_OpretHus.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
                 new SqlParameter("@område", txt_område.Text),
                 new SqlParameter("@inspektør", txt_inspektør.Text));
-                new SqlParameter("@ejerId", comboBox2.SelectedItem.ToString());
 
             MessageBox.Show("Fuldført");
             databaseSetup.LoadData(dataGridView1, tabelString);
