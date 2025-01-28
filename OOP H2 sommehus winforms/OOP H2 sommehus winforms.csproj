@@ -76,6 +76,9 @@
     <EmbeddedResource Include="Sommerhus.resx">
       <DependentUpon>Sommerhus.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="sommerhusejere.resx">
+      <DependentUpon>sommerhusejere.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="startside.resx">
       <DependentUpon>startside.cs</DependentUpon>
     </EmbeddedResource>

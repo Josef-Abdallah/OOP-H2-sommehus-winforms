@@ -18,11 +18,12 @@ namespace OOP_H2_sommehus_winforms
 
         public string masterConnectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
         public string connectionString = "Server=localhost\\SQLEXPRESS;Database=Sommerhus-DB;Trusted_Connection=True;";
+        private string tabelString = "sommerhus";
 
         public Sommerhus()
         {
             InitializeComponent();
-            databaseSetup.EnsureDatabaseAndTables();
+            databaseSetup.EnsureDatabaseAndTables(tabelString);
             databaseSetup.LoadData(dataGridView1);
             SetInitialVisibility();
         }
