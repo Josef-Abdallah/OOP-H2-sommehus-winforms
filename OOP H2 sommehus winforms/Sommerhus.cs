@@ -23,10 +23,17 @@ namespace OOP_H2_sommehus_winforms
         public Sommerhus()
         {
             InitializeComponent();
+            // Create the database and tables if they don't exist
             databaseSetup.EnsureDatabaseAndTables(tabelString);
+            // Load the data into the data grid view
             databaseSetup.LoadData(dataGridView1);
+            // Set the  visibility of the edit fields to false
             SetInitialVisibility();
+            
+            AddSæsonToComboBoxes(Sæson_comboBox_rediger);
+            AddSæsonToComboBoxes(Sæson_comboBox_Opret);
         }
+
 
         /// <summary>
         /// Sets the initial visibility of the form elements to false.
@@ -35,7 +42,7 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = false;
             txt_Rområde.Visible = false;
-            txt_Rsæson.Visible = false;
+            Sæson_comboBox_rediger.Visible = false;
             txt_Rinspektør.Visible = false;
 
             label11.Visible = false;
@@ -51,7 +58,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@navn", txt_navn.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_pris.Text)),
                 new SqlParameter("@område", txt_område.Text),
-                new SqlParameter("@sæson", txt_sæson.Text),
+                new SqlParameter("@sæson", Sæson_comboBox_Opret.Text),
                 new SqlParameter("@inspektør", txt_inspektør.Text));
 
             MessageBox.Show("Fuldført");
@@ -64,7 +71,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@navn", txt_Rnavn.Text),
                 new SqlParameter("@pris", decimal.Parse(txt_Rpris.Text)),
                 new SqlParameter("@område", txt_Rområde.Text),
-                new SqlParameter("@sæson", txt_Rsæson.Text),
+                new SqlParameter("@sæson", Sæson_comboBox_rediger.Text),
                 new SqlParameter("@inspektør", txt_Rinspektør.Text),
                 new SqlParameter("@oldNavn", txt_Rnavn.Text));
 
@@ -86,7 +93,7 @@ namespace OOP_H2_sommehus_winforms
             txt_Rnavn.Text = "";
             txt_Rområde.Text = "";
             txt_Rpris.Text = "";
-            txt_Rsæson.Text = "";
+            Sæson_comboBox_rediger.Text = "";
             txt_Rinspektør.Text = "";
 
             SetInitialVisibility();
@@ -138,7 +145,7 @@ namespace OOP_H2_sommehus_winforms
         {
             txt_Rpris.Visible = true;
             txt_Rområde.Visible = true;
-            txt_Rsæson.Visible = true;
+            Sæson_comboBox_rediger.Visible = true;
             txt_Rinspektør.Visible = true;
 
             label11.Visible = true;
@@ -163,6 +170,14 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
+
+        private void AddSæsonToComboBoxes(ComboBox comboBox)
+        {
+            comboBox.Items.Add("Vinter");
+            comboBox.Items.Add("Sommer");
+            comboBox.Items.Add("Efterår");
+            comboBox.Items.Add("Forår");
+        }
         private void Sommerhus_Load(object sender, EventArgs e)
         {
         }
@@ -172,6 +187,16 @@ namespace OOP_H2_sommehus_winforms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+        }
+
+        private void txt_Rnavn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
