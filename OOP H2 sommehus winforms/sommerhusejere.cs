@@ -23,7 +23,7 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables(tabelString);
-            databaseSetup.LoadData(dataGridView1,tabelString);
+            databaseSetup.LoadData(dataGridView1, tabelString);
         }
 
         private void button_opret_Click(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace OOP_H2_sommehus_winforms
 
             connection.Close();
             MessageBox.Show("Fuldført");
-            databaseSetup.LoadData(dataGridView1,tabelString);
+            databaseSetup.LoadData(dataGridView1, tabelString);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -52,6 +52,39 @@ namespace OOP_H2_sommehus_winforms
             startside ss = new startside();
             ss.Show();
             Visible = false;
+        }
+        private void ExecuteNonQuery(string query, params SqlParameter[] parameters)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddRange(parameters);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        private void button_redigere_Click(object sender, EventArgs e)
+        {
+            {
+                SommerhusData sommerhusejere = new SommerhusData
+                {
+                    Navn = txt_navn_redigere.Text,
+                };
+
+                ExecuteNonQuery("UPDATE [sommerhus] SET navn=@navn,tlf=@tlf, email=@email WHERE navn=@oldNavn",
+                    new SqlParameter("@navn", sommerhusejere.Navn),
+                    new SqlParameter("@tlf", sommerhusejere.Navn),
+                    new SqlParameter("@email", sommerhusejere.Navn),
+                    new SqlParameter("@oldNavn", sommerhusejere.Navn));
+
+
+
+                MessageBox.Show("Opdateret");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+
+            }
         }
     }
 }
