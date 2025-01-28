@@ -24,7 +24,7 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables(tabelString);
-            databaseSetup.LoadData(dataGridView1);
+            databaseSetup.LoadData(dataGridView1, tabelString);
             SetInitialVisibility();
         }
 
@@ -55,7 +55,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@inspektør", txt_inspektør.Text));
 
             MessageBox.Show("Fuldført");
-            databaseSetup.LoadData(dataGridView1);
+            databaseSetup.LoadData(dataGridView1,tabelString);
         }
 
         private void RedigerSommerhus_button(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@oldNavn", txt_Rnavn.Text));
 
             MessageBox.Show("Opdateret");
-            databaseSetup.LoadData(dataGridView1);
+            databaseSetup.LoadData(dataGridView1,tabelString);
             ResetFormFields();
         }
         private void button_Slet_Click(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace OOP_H2_sommehus_winforms
                 new SqlParameter("@navn", txt_Snavn.Text));
 
             MessageBox.Show("Slettet");
-            databaseSetup.LoadData(dataGridView1);
+            databaseSetup.LoadData(dataGridView1, tabelString);
         }
 
         private void ResetFormFields()

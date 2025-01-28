@@ -22,11 +22,8 @@ namespace OOP_H2_sommehus_winforms
         public sommerhusejere()
         {
             InitializeComponent();
-            InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables(tabelString);
-            databaseSetup.LoadData(dataGridView1);
-
-
+            databaseSetup.LoadData(dataGridView1,tabelString);
         }
 
         private void button_opret_Click(object sender, EventArgs e)
@@ -41,7 +38,7 @@ namespace OOP_H2_sommehus_winforms
 
             connection.Close();
             MessageBox.Show("Fuldført");
-            databaseSetup.LoadData(dataGridView1);
+            databaseSetup.LoadData(dataGridView1,tabelString);
         }
     }
 }
