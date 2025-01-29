@@ -131,9 +131,9 @@ namespace OOP_H2_sommehus_winforms
                     string insertSommerhusQuery = @"
                 INSERT INTO sommerhus (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) 
                 VALUES
-                (1, 'Beach House', 'Copenhagen', 'Seaside Road 12', 1500.00, 'Seaside', 'Inspector A'),
-                (2, 'Mountain Cabin', 'Aarhus', 'Pine Street 5', 2000.00, 'Mountain', 'Inspector B'),
-                (3, 'Lake Cottage', 'Odense', 'Lake View 9', 1750.00, 'Lakeside', 'Inspector C');";
+                (1, 'Beach House', 'Copenhagen', 'Seaside Road 12', 1500.00, 'Seaside', 'hans'),
+                (2, 'Mountain Cabin', 'Aarhus', 'Pine Street 5', 2000.00, 'Mountain', 'peter'),
+                (3, 'Lake Cottage', 'Odense', 'Lake View 9', 1750.00, 'Lakeside', 'lars');";
                     new SqlCommand(insertSommerhusQuery, connection).ExecuteNonQuery();
                 }
 
