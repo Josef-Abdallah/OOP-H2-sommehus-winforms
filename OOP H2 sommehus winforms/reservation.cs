@@ -114,9 +114,40 @@ namespace OOP_H2_sommehus_winforms
                 databaseSetup.LoadData(dataGridView1, tabelString);
             }
         }
+        private void button_Redigere_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE [resevartion] SET sommerHusId=@sommerHusId, navn=@navn, kontaktinformation=@kontaktinformation, StartDato=@StartDato, SlutDato=@SlutDato, IsReserved=@IsReserved WHERE navn=@Navn", connection);
+                cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(comboBox_RsommerhusId.Text.Split(':')[0]));
+                cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
+                cmd.Parameters.AddWithValue("@kontaktinformation", txt_Rtlf.Text);
+                cmd.Parameters.AddWithValue("@StartDato", fromDateR.Value);
+                cmd.Parameters.AddWithValue("@SlutDato", ToDateR.Value);
+                cmd.Parameters.AddWithValue("@IsReserved", true);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Opdateret");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+                ResetFormFields();
+            }
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [resevartion] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_Snavn.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Slettet");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+            }
+        }
 
         /// <summary>
-        /// Loads all "sommerhusId" into comboBox2.
+        /// Loads all "sommerhusId" into SommerhusId_combobox.
         /// </summary>
         private void LoadSommerhusIdIntoComboBox()
         {
@@ -162,50 +193,6 @@ namespace OOP_H2_sommehus_winforms
         }
 
 
-        private void button_Redigere_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand("UPDATE [resevartion] SET sommerHusId=@sommerHusId, navn=@navn, kontaktinformation=@kontaktinformation, StartDato=@StartDato, SlutDato=@SlutDato, IsReserved=@IsReserved WHERE navn=@Navn", connection);
-                cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(comboBox_RsommerhusId.Text.Split(':')[0]));
-                cmd.Parameters.AddWithValue("@navn", txt_Rnavn.Text);
-                cmd.Parameters.AddWithValue("@kontaktinformation", txt_Rtlf.Text);
-                cmd.Parameters.AddWithValue("@StartDato", fromDateR.Value);
-                cmd.Parameters.AddWithValue("@SlutDato", ToDateR.Value);
-                cmd.Parameters.AddWithValue("@IsReserved", true);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Opdateret");
-                databaseSetup.LoadData(dataGridView1, tabelString);
-                ResetFormFields();
-            }
-        }
-        private void SetInitialVisibility()
-        {
-            txt_Rtlf.Visible = false;
-            fromDateR.Visible = false;
-            ToDateR.Visible = false;
-            comboBox_RsommerhusId.Visible = false;
-
-            label7.Visible = false;
-            label6.Visible = false;
-            label5.Visible = false;
-
-            button_FindReservedHouse.Visible = true;
-            button_Redigere.Visible = false;
-        }
-        private void button_Delete_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM [resevartion] WHERE navn=@navn", connection);
-                cmd.Parameters.AddWithValue("@navn", txt_Snavn.Text);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Slettet");
-                databaseSetup.LoadData(dataGridView1, tabelString);
-            }
-        }
         private void ResetFormFields()
         {
             txt_Rnavn.Text = "";
@@ -219,6 +206,7 @@ namespace OOP_H2_sommehus_winforms
 
             txt_Rnavn.ReadOnly = false; // Unlock the text box for new input
         }
+
         private void button_FindReservedHouse_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -239,6 +227,21 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
+        private void SetInitialVisibility()
+        {
+            txt_Rtlf.Visible = false;
+            fromDateR.Visible = false;
+            ToDateR.Visible = false;
+            comboBox_RsommerhusId.Visible = false;
+
+            label7.Visible = false;
+            label6.Visible = false;
+            label5.Visible = false;
+
+            button_FindReservedHouse.Visible = true;
+            button_Redigere.Visible = false;
+        }
+
         private void ShowEditFields()
         {
             txt_Rnavn.Visible = true;
