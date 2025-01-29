@@ -131,9 +131,9 @@ namespace OOP_H2_sommehus_winforms
                     string insertSommerhusQuery = @"
                 INSERT INTO sommerhus (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) 
                 VALUES
-                (1, 'Beach House', 'Copenhagen', 'Seaside Road 12', 1500.00, 'Seaside', 'hans'),
-                (2, 'Mountain Cabin', 'Aarhus', 'Pine Street 5', 2000.00, 'Mountain', 'peter'),
-                (3, 'Lake Cottage', 'Odense', 'Lake View 9', 1750.00, 'Lakeside', 'lars');";
+                (1, 'Beach House', 'Copenhagen', 'Seaside Road 12', 15000.00, 'Seaside', 'hans'),
+                (2, 'Mountain Cabin', 'Aarhus', 'Pine Street 5', 20000.00, 'Mountain', 'peter'),
+                (3, 'Lake Cottage', 'Odense', 'Lake View 9', 17500.00, 'Lakeside', 'lars');";
                     new SqlCommand(insertSommerhusQuery, connection).ExecuteNonQuery();
                 }
 
@@ -146,14 +146,13 @@ namespace OOP_H2_sommehus_winforms
                     string insertReservationQuery = @"
                 INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved, Price) 
                 VALUES
-                (1, 'Alice Johnson', 'alice@mail.com', '2025-07-01', '2025-07-10', 1, 1500.00),
-                (2, 'Bob Brown', 'bob@mail.com', '2025-08-05', '2025-08-15', 1, 2000.00),
-                (3, 'Charlie Davis', 'charlie@mail.com', '2025-09-10', '2025-09-20', 1, 1750.00);";
+                (1, 'Alice Johnson', 'alice@mail.com', '2025-07-01', '2025-07-10', 1, 15000.00),
+                (2, 'Bob Brown', 'bob@mail.com', '2025-08-05', '2025-08-15', 1, 20000.00),
+                (3, 'Charlie Davis', 'charlie@mail.com', '2025-09-10', '2025-09-20', 1, 17500.00);";
                     new SqlCommand(insertReservationQuery, connection).ExecuteNonQuery();
                 }
             }
         }
-
         public void LoadData(DataGridView dataGridView,string tabel)
         {
             try
