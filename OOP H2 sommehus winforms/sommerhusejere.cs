@@ -31,6 +31,18 @@ namespace OOP_H2_sommehus_winforms
 
         private void button_opret_Click(object sender, EventArgs e)
         {
+            if (!validateUserInput.IsValidPhoneNumber(txt_tlf.Text))
+            {
+                MessageBox.Show("Telefonnummer skal være 8 cifre.");
+                return;
+            }
+
+            if (!validateUserInput.IsValidEmail(txt_email.Text))
+            {
+                MessageBox.Show("Email skal indeholde '@'.");
+                return;
+            }
+
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO [sommerhusejere] (navn,email,tlf) VALUES (@navn, @email,@tlf)", connection);
@@ -45,6 +57,37 @@ namespace OOP_H2_sommehus_winforms
             databaseSetup.LoadData(dataGridView1, tabelString);
         }
 
+        private void button_redigere_Click(object sender, EventArgs e)
+        {
+            if (!validateUserInput.IsValidPhoneNumber(txt_tlf_redigere.Text))
+            {
+                MessageBox.Show("Telefonnummer skal være 8 cifre.");
+                return;
+            }
+
+            if (!validateUserInput.IsValidEmail(txt_email_redigere.Text))
+            {
+                MessageBox.Show("Email skal indeholde '@'.");
+                return;
+            }
+
+            SommerhusejereData sommerhusejere = new SommerhusejereData
+            {
+                Navn = txt_navn_redigere.Text,
+                tlf = txt_tlf_redigere.Text,
+                email = txt_email_redigere.Text
+            };
+
+            ExecuteNonQuery("UPDATE [sommerhusejere] SET navn=@navn, tlf=@tlf, email=@email WHERE navn=@oldNavn",
+                new SqlParameter("@navn", sommerhusejere.Navn),
+                new SqlParameter("@tlf", sommerhusejere.tlf),
+                new SqlParameter("@email", sommerhusejere.email),
+                new SqlParameter("@oldNavn", sommerhusejere.Navn));
+
+            MessageBox.Show("Opdateret");
+            databaseSetup.LoadData(dataGridView1, tabelString);
+            ResetFormFields();
+        }
 
         private void StartsideBut_Click(object sender, EventArgs e)
         {
@@ -62,27 +105,6 @@ namespace OOP_H2_sommehus_winforms
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
-        }
-
-        private void button_redigere_Click(object sender, EventArgs e)
-        {
-            SommerhusejereData sommerhusejere = new SommerhusejereData
-            {
-                Navn = txt_navn_redigere.Text,
-                tlf = txt_tlf_redigere.Text,
-                email = txt_email_redigere.Text
-            };
-
-            ExecuteNonQuery("UPDATE [sommerhusejere] SET navn=@navn, tlf=@tlf, email=@email WHERE navn=@oldNavn",
-                new SqlParameter("@navn", sommerhusejere.Navn),
-                new SqlParameter("@tlf", sommerhusejere.tlf),
-                new SqlParameter("@email", sommerhusejere.email),
-                new SqlParameter("@oldNavn", sommerhusejere.Navn));
-
-            MessageBox.Show("Opdateret");
-            databaseSetup.LoadData(dataGridView1, tabelString);
-            ResetFormFields();
-
         }
 
         private void checkNameButton_Click(object sender, EventArgs e)
@@ -105,6 +127,21 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
+
+        private void button_DeleteEjere_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM [sommerhusejere] WHERE navn=@navn", connection);
+                cmd.Parameters.AddWithValue("@navn", txt_navn_delete.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Slettet");
+                databaseSetup.LoadData(dataGridView1, tabelString);
+            }
+        }
+
+
         /// <summary>
         /// is being used to show the edit fields so you can edit
         /// </summary>
@@ -148,17 +185,6 @@ namespace OOP_H2_sommehus_winforms
             button_redigere.Visible = false;
         }
 
-        private void button_DeleteEjere_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand("DELETE FROM [sommerhusejere] WHERE navn=@navn", connection);
-                cmd.Parameters.AddWithValue("@navn", txt_navn_delete.Text);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Slettet");
-                databaseSetup.LoadData(dataGridView1, tabelString);
-            }
-        }
+       
     }
 }

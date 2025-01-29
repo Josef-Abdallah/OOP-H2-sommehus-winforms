@@ -75,6 +75,7 @@
     <Compile Include="sommerhusejere.Designer.cs">
       <DependentUpon>sommerhusejere.cs</DependentUpon>
     </Compile>
+    <Compile Include="validateUserInput.cs" />
     <EmbeddedResource Include="reservation.resx">
       <DependentUpon>reservation.cs</DependentUpon>
     </EmbeddedResource>

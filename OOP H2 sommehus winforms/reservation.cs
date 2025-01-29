@@ -61,6 +61,11 @@ namespace OOP_H2_sommehus_winforms
                 MessageBox.Show("Start date cannot be after the end date.");
                 return;
             }
+            if (!validateUserInput.IsValidPhoneNumber(txt_kontaktinformation.Text))
+            {
+                MessageBox.Show("Telefonnummer skal være 8 cifre.");
+                return;
+            }
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -118,6 +123,12 @@ namespace OOP_H2_sommehus_winforms
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                if (!validateUserInput.IsValidPhoneNumber(txt_Rtlf.Text))
+                {
+                    MessageBox.Show("Telefonnummer skal være 8 cifre.");
+                    return;
+                }
+
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE [resevartion] SET sommerHusId=@sommerHusId, navn=@navn, kontaktinformation=@kontaktinformation, StartDato=@StartDato, SlutDato=@SlutDato, IsReserved=@IsReserved WHERE navn=@Navn", connection);
                 cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(comboBox_RsommerhusId.Text.Split(':')[0]));
@@ -227,6 +238,7 @@ namespace OOP_H2_sommehus_winforms
                 connection.Close();
             }
         }
+
         private void SetInitialVisibility()
         {
             txt_Rtlf.Visible = false;

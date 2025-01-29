@@ -146,9 +146,9 @@ namespace OOP_H2_sommehus_winforms
                     string insertReservationQuery = @"
                 INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved, Price) 
                 VALUES
-                (1, 'Alice Johnson', 'alice@mail.com', '2025-07-01', '2025-07-10', 1, 15000.00),
-                (2, 'Bob Brown', 'bob@mail.com', '2025-08-05', '2025-08-15', 1, 20000.00),
-                (3, 'Charlie Davis', 'charlie@mail.com', '2025-09-10', '2025-09-20', 1, 17500.00);";
+                (1, 'Alice Johnson', '40908237', '2025-07-01', '2025-07-10', 1, 15000.00),
+                (2, 'Bob Brown', '66774563', '2025-08-05', '2025-08-15', 1, 20000.00),
+                (3, 'Charlie Davis', '89765626', '2025-09-10', '2025-09-20', 1, 17500.00);";
                     new SqlCommand(insertReservationQuery, connection).ExecuteNonQuery();
                 }
             }

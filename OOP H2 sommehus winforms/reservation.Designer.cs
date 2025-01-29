@@ -265,7 +265,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 29);
             this.label8.TabIndex = 51;
-            this.label8.Text = "Navn";
+            this.label8.Text = "Lejer";
             // 
             // label9
             // 
@@ -274,9 +274,9 @@
             this.label9.Location = new System.Drawing.Point(738, 31);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(267, 47);
+            this.label9.Size = new System.Drawing.Size(383, 47);
             this.label9.TabIndex = 50;
-            this.label9.Text = "Rediger huse";
+            this.label9.Text = "Rediger reservation";
             // 
             // button_Redigere
             // 
