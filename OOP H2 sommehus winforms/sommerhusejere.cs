@@ -24,6 +24,7 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
             databaseSetup.EnsureDatabaseAndTables(tabelString);
+            databaseSetup.DataForDB();
             databaseSetup.LoadData(dataGridView1, tabelString);
             SetInitialVisibility();
         }

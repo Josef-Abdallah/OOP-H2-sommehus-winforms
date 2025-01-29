@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,6 +99,58 @@ namespace OOP_H2_sommehus_winforms
             catch (Exception ex)
             {
                 MessageBox.Show($"Error ensuring database and tables: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void DataForDB()
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Check and insert into sommerhusejere
+                string checkEjerQuery = "SELECT COUNT(*) FROM [sommerhusejere] WHERE navn = 'John Doe'";
+                SqlCommand checkEjerCmd = new SqlCommand(checkEjerQuery, connection);
+                int countEjer = (int)checkEjerCmd.ExecuteScalar();
+                if (countEjer == 0)
+                {
+                    string insertEjerQuery = @"
+                INSERT INTO sommerhusejere (navn, email, tlf) 
+                VALUES
+                ('John Doe', 'john@example.com', '12345678'),
+                ('Jane Smith', 'jane@example.com', '87654321'),
+                ('Peter Parker', 'peter@dailybugle.com', '99887766');";
+                    new SqlCommand(insertEjerQuery, connection).ExecuteNonQuery();
+                }
+                // Check and insert into sommerhus
+                string checkSommerhusQuery = "SELECT COUNT(*) FROM [sommerhus] WHERE navn = 'Beach House'";
+                SqlCommand checkSommerhusCmd = new SqlCommand(checkSommerhusQuery, connection);
+                int countSommerhus = (int)checkSommerhusCmd.ExecuteScalar();
+                if (countSommerhus == 0)
+                {
+                    string insertSommerhusQuery = @"
+                INSERT INTO sommerhus (ejerId, navn, bynavn, vejnavn, pris, område, inspektør) 
+                VALUES
+                (1, 'Beach House', 'Copenhagen', 'Seaside Road 12', 1500.00, 'Seaside', 'Inspector A'),
+                (2, 'Mountain Cabin', 'Aarhus', 'Pine Street 5', 2000.00, 'Mountain', 'Inspector B'),
+                (3, 'Lake Cottage', 'Odense', 'Lake View 9', 1750.00, 'Lakeside', 'Inspector C');";
+                    new SqlCommand(insertSommerhusQuery, connection).ExecuteNonQuery();
+                }
+
+                // Check and insert into resevartion
+                string checkReservationQuery = "SELECT COUNT(*) FROM [resevartion] WHERE navn = 'Alice Johnson'";
+                SqlCommand checkReservationCmd = new SqlCommand(checkReservationQuery, connection);
+                int countReservation = (int)checkReservationCmd.ExecuteScalar();
+                if (countReservation == 0)
+                {
+                    string insertReservationQuery = @"
+                INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved, Price) 
+                VALUES
+                (1, 'Alice Johnson', 'alice@mail.com', '2025-07-01', '2025-07-10', 1, 1500.00),
+                (2, 'Bob Brown', 'bob@mail.com', '2025-08-05', '2025-08-15', 1, 2000.00),
+                (3, 'Charlie Davis', 'charlie@mail.com', '2025-09-10', '2025-09-20', 1, 1750.00);";
+                    new SqlCommand(insertReservationQuery, connection).ExecuteNonQuery();
+                }
             }
         }
 
