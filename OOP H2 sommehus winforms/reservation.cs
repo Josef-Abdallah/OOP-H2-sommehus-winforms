@@ -28,6 +28,31 @@ namespace OOP_H2_sommehus_winforms
             LoadSommerhusIdIntoComboBox();
         }
 
+        private decimal CalculatePrice(DateTime startDate, DateTime endDate, decimal basePrice)
+        {
+            decimal totalPrice = 0;
+            for (DateTime date = startDate; date < endDate; date = date.AddDays(1))
+            {
+                if (date.Month >= 6 && date.Month <= 8) // Summer
+                {
+                    totalPrice += basePrice * 1.20m;
+                }
+                else if (date.Month == 12 || date.Month == 1 || date.Month == 2) // Winter
+                {
+                    totalPrice += basePrice * 1.10m;
+                }
+                else if (date.Month >= 3 && date.Month <= 5) // Spring
+                {
+                    totalPrice += basePrice * 1.05m;
+                }
+                else // Autumn
+                {
+                    totalPrice += basePrice;
+                }
+            }
+            return totalPrice;
+        }
+
         private void button_opret_Click(object sender, EventArgs e)
         {
             if (fromDate.Value > ToDate.Value)
@@ -65,10 +90,15 @@ namespace OOP_H2_sommehus_winforms
                     tlfNummer = txt_kontaktinformation.Text
                 };
 
+                // Calculate price
+
+                decimal basePrice = GetBasePrice(int.Parse(SommerhusId_combobox.Text.Split(':')[0]));
+                decimal totalPrice = CalculatePrice(fromDate.Value, ToDate.Value, basePrice);
+
                 // Insert new reservation
                 SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved) " +
-                    "VALUES (@sommerHusId, @navn, @kontaktinformation, @StartDato, @SlutDato, @IsReserved)",
+                    "INSERT INTO resevartion (sommerHusId, navn, kontaktinformation, StartDato, SlutDato, IsReserved, Price) " +
+                    "VALUES (@sommerHusId, @navn, @kontaktinformation, @StartDato, @SlutDato, @IsReserved, @Price)",
                     connection);
                 cmd.Parameters.AddWithValue("@sommerHusId", int.Parse(SommerhusId_combobox.Text.Split(':')[0]));
                 cmd.Parameters.AddWithValue("@navn", customer.Navn);
@@ -76,6 +106,7 @@ namespace OOP_H2_sommehus_winforms
                 cmd.Parameters.AddWithValue("@StartDato", fromDate.Value);
                 cmd.Parameters.AddWithValue("@SlutDato", ToDate.Value);
                 cmd.Parameters.AddWithValue("@IsReserved", true);
+                cmd.Parameters.AddWithValue("@Price", totalPrice);
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Reservation created successfully.");
@@ -108,6 +139,27 @@ namespace OOP_H2_sommehus_winforms
             ss.Show();
             Visible = false;
         }
+
+        public decimal GetBasePrice(int sommerHusId)
+        {
+            decimal basePrice = 0;
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT pris FROM sommerhus WHERE sommerHusId = @sommerHusId", connection);
+                    cmd.Parameters.AddWithValue("@sommerHusId", sommerHusId);
+                    basePrice = (decimal)cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error retrieving base price: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return basePrice;
+        }
+
 
         private void button_Redigere_Click(object sender, EventArgs e)
         {
