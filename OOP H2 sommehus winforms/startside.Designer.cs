@@ -35,9 +35,10 @@
             // 
             // sommerhusejere
             // 
-            this.sommerhusejere.Location = new System.Drawing.Point(946, 423);
+            this.sommerhusejere.Location = new System.Drawing.Point(444, 440);
+            this.sommerhusejere.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sommerhusejere.Name = "sommerhusejere";
-            this.sommerhusejere.Size = new System.Drawing.Size(695, 391);
+            this.sommerhusejere.Size = new System.Drawing.Size(608, 289);
             this.sommerhusejere.TabIndex = 0;
             this.sommerhusejere.Text = "sommerhusejere";
             this.sommerhusejere.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1647, 423);
+            this.button2.Location = new System.Drawing.Point(1060, 440);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(695, 391);
+            this.button2.Size = new System.Drawing.Size(608, 289);
             this.button2.TabIndex = 1;
             this.button2.Text = "sommerhus";
             this.button2.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(2348, 423);
+            this.button3.Location = new System.Drawing.Point(1676, 440);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(695, 391);
+            this.button3.Size = new System.Drawing.Size(608, 289);
             this.button3.TabIndex = 2;
             this.button3.Text = "resivation af sommerhus";
             this.button3.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@
             // 
             // startside
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(3078, 1367);
+            this.ClientSize = new System.Drawing.Size(2884, 1709);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.sommerhusejere);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "startside";
             this.Text = "StartSide";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
