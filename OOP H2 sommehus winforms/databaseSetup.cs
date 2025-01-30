@@ -19,7 +19,7 @@ namespace OOP_H2_sommehus_winforms
         /// <summary>
         /// Ensure that the database and tables are created
         /// </summary>
-        public void EnsureDatabaseAndTables(string tabel)
+        public void EnsureDatabaseAndTables()
         {
             try
             {
@@ -42,58 +42,49 @@ namespace OOP_H2_sommehus_winforms
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    if (tabel == "sommerhus")
-                    {
-                        checkTableQuery = $@"
-        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
-        BEGIN
-            CREATE TABLE [{tabel}] (
-                sommerHusId INT IDENTITY(1,1) PRIMARY KEY, 
-                ejerId INT NOT NULL FOREIGN KEY REFERENCES [sommerhusejere](ejerId),
-                navn NVARCHAR(100) NOT NULL,
-                bynavn NVARCHAR(50) NOT NULL,
-                vejnavn NVARCHAR(50) NOT NULL,
-                pris DECIMAL(18, 2) NOT NULL,
-                område NVARCHAR(100) NOT NULL,
-                inspektør NVARCHAR(100)
-            );
-            END";
-                    }
-                    else if (tabel == "sommerhusejere")
-                    {
-                        checkTableQuery = $@"
-        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
-        BEGIN
-            CREATE TABLE [{tabel}] (
-                ejerId INT IDENTITY(1,1) PRIMARY KEY,
-                navn NVARCHAR(100) NOT NULL,
-                email NVARCHAR(100) NOT NULL,
-                tlf NVARCHAR(100) NOT NULL
-            );
-            END";
-                    }
-                    else if (tabel == "resevartion")
-                    {
-                        checkTableQuery = $@"
-        IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = '{tabel}' AND xtype = 'U')
-        BEGIN
-            CREATE TABLE [{tabel}] (
-                 Id INT IDENTITY(1,1) PRIMARY KEY,
-                sommerHusId INT NOT NULL FOREIGN KEY REFERENCES [sommerhus](sommerHusId),
-                navn NVARCHAR(100) NOT NULL,
-                kontaktinformation NVARCHAR(100) NOT NULL,
-                StartDato DATETIME NOT NULL,
-                SlutDato DATETIME NOT NULL,
-                IsReserved BIT NOT NULL DEFAULT 0,
-                Price DECIMAL(18, 2) NOT NULL
-            );
-            END";
-                    }
+
+                    checkTableQuery = $@"
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'sommerhusejere' AND xtype = 'U')
+BEGIN
+    CREATE TABLE [sommerhusejere] (
+        ejerId INT IDENTITY(1,1) PRIMARY KEY,
+        navn NVARCHAR(100) NOT NULL,
+        email NVARCHAR(100) NOT NULL,
+        tlf NVARCHAR(100) NOT NULL
+    );
+END;
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'sommerhus' AND xtype = 'U')
+BEGIN
+    CREATE TABLE [sommerhus] (
+        sommerHusId INT IDENTITY(1,1) PRIMARY KEY, 
+        ejerId INT NOT NULL FOREIGN KEY REFERENCES [sommerhusejere](ejerId),
+        navn NVARCHAR(100) NOT NULL,
+        bynavn NVARCHAR(50) NOT NULL,
+        vejnavn NVARCHAR(50) NOT NULL,
+        pris DECIMAL(18, 2) NOT NULL,
+        område NVARCHAR(100) NOT NULL,
+        inspektør NVARCHAR(100)
+    );
+END;
+
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'resevartion' AND xtype = 'U')
+BEGIN
+    CREATE TABLE [resevartion] (
+        Id INT IDENTITY(1,1) PRIMARY KEY,
+        sommerHusId INT NOT NULL FOREIGN KEY REFERENCES [sommerhus](sommerHusId),
+        navn NVARCHAR(100) NOT NULL,
+        kontaktinformation NVARCHAR(100) NOT NULL,
+        StartDato DATETIME NOT NULL,
+        SlutDato DATETIME NOT NULL,
+        IsReserved BIT NOT NULL DEFAULT 0,
+        Price DECIMAL(18, 2) NOT NULL
+    );
+END;";  
                     using (SqlCommand cmd = new SqlCommand(checkTableQuery, connection))
-                        {
-                            cmd.ExecuteNonQuery();
-                        }
-                    
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)

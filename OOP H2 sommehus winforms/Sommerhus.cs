@@ -24,7 +24,6 @@ namespace OOP_H2_sommehus_winforms
         {
             InitializeComponent();
             // Create the database and tables if they don't exist
-            databaseSetup.EnsureDatabaseAndTables(tabelString);
             // Load the data into the data grid view
             databaseSetup.DataForDB();
             databaseSetup.LoadData(dataGridView1, tabelString);

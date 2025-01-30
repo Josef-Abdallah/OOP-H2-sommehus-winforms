@@ -15,7 +15,9 @@ namespace OOP_H2_sommehus_winforms
     {
         public startside()
         {
+            databaseSetup dbs = new databaseSetup();
             InitializeComponent();
+            dbs.EnsureDatabaseAndTables();
         }
         private void Sommerhusejere(object sender, EventArgs e)
         {
